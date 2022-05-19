@@ -168,7 +168,7 @@ def kogi_login(class_name='unknown'):
         with open(FILE_NAME, 'w') as fp:
           fp.write(keys)
 
-        return IPython.display.JSON({'acc': acc, 'time': time})
+        return keys, IPython.display.JSON({'acc': acc, 'time': time})
         # except Exception as e:
         #     kogi_print(e)
 
