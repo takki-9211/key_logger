@@ -169,9 +169,10 @@ def kogi_login(class_name='unknown'):
           fp.write(keys)
 
         js = {'acc': acc, 'time': time}
+        key = keys
 
-        return keys, js
-        # return keys, IPython.display.JSON({'acc': acc, 'time': time})
+        return key, js
+        # return IPython.display.JSON({'acc': acc, 'time': time})
         # except Exception as e:
         #     kogi_print(e)
     
