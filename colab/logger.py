@@ -12,9 +12,7 @@ epoch = datetime.now().timestamp()
 
 def send_log(right_now=False):
     global epoch, LOGS
-    now = datetime.now()
-    FOLDER_NAME = '{0:%Y-%m-%d}'.format(now)
-    url = 'https://2twhynojr3.execute-api.ap-northeast-1.amazonaws.com/dev/' + FOLDER_NAME
+    url = 'https://2twhynojr3.execute-api.ap-northeast-1.amazonaws.com/dev/'
     now = datetime.now().timestamp()
     delta = (now - epoch)
     epoch = now
