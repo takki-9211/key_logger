@@ -167,19 +167,14 @@ def kogi_login(class_name='unknown'):
         print(FILE_NAME)
         with open(FILE_NAME, 'w') as fp:
           fp.write(keys)
-
-        js = {'acc': acc, 'time': time}
-        key = keys
-
-        return key, js
-        # return IPython.display.JSON({'acc': acc, 'time': time})
+          
+        return IPython.display.JSON({'acc': acc, 'time': time})
         # except Exception as e:
         #     kogi_print(e)
     
-    keys, js = login
-    output.register_callback('notebook.login', IPython.display.JSON(js))
-    # output.register_callback('notebook.login', login)
+    # output.register_callback('notebook.login', IPython.display.JSON(js))
+    output.register_callback('notebook.login', login)
     display(IPython.display.HTML(LOGIN_HTML))
     display(IPython.display.HTML(LOGIN_SCRIPT))
 
-    return keys
+    # return keys
