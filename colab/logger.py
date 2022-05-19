@@ -1,5 +1,3 @@
-# https://2twhynojr3.execute-api.ap-northeast-1.amazonaws.com/dev/
-
 import uuid
 from datetime import datetime
 import requests
@@ -11,9 +9,12 @@ UID = 'unknown'
 KEY='OjwoF3m0l20OFidHsRea3ptuQRfQL10ahbEtLa'
 epoch = datetime.now().timestamp()
 
+
 def send_log(right_now=False):
     global epoch, LOGS
-    url = 'https://2twhynojr3.execute-api.ap-northeast-1.amazonaws.com/dev/'
+    now = datetime.now()
+    FOLDER_NAME = '{0:%Y-%m-%d}'.format(now)
+    url = 'https://2twhynojr3.execute-api.ap-northeast-1.amazonaws.com/dev/' + FOLDER_NAME
     now = datetime.now().timestamp()
     delta = (now - epoch)
     epoch = now
@@ -44,11 +45,7 @@ def record_login(uid, **kw):
     UID = f'{uid}'
     logdata = log(uid=UID, **kw)
     send_log(right_now=True)
-    # if slack is None:
-    #     send_slack(logdata)
         
 
 if __name__ == '__main__':
-    # log(a=1, b=2)
-    # log_now()
     record_login(uid='11111', test='test')

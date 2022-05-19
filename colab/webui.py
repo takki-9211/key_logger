@@ -164,7 +164,7 @@ def kogi_login(class_name='unknown'):
         #　ファイル名を日付&時刻に指定する
         now = datetime.datetime.now()
         FILE_NAME = "{0:%Y%m%d_%H%M%S}.txt".format(now)
-        print(FILE_NAME)
+        # print(FILE_NAME)
         with open(FILE_NAME, 'w') as fp:
           fp.write(keys)
           
