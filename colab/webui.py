@@ -154,7 +154,7 @@ def kogi_login(class_name='unknown'):
         acc = round(_accuracy(code), 3)
         time = round(_time(keys), 3)
         keys = keys.split('\n')[-1]
-        # print(keys)
+        print(keys)
         record_login(type='typing',
                       uid=name, class_name=class_name,
                       code=code, keys=keys,
