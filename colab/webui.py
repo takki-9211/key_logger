@@ -1,7 +1,9 @@
 import IPython
 from IPython.display import display, HTML
+import datetime
 from google.colab import output
 from .logger import log, send_log, record_login
+
 
 # def debug_log():
 #     try:
@@ -158,11 +160,17 @@ def kogi_login(class_name='unknown'):
                       code=code, keys=keys,
                     #  mean_time=time, accuracy=acc,
                       counts=counts, browser=useragent)
+
+        #　ファイル名を日付&時刻に指定する
+        now = datetime.datetime.now()
+        FILE_NAME = "{0:%Y%m%d_%H%M%S}.txt".format(now)
+        print(FILE_NAME)
+        with open(FILE_NAME, 'w') as fp:
+          fp.write(keys)
+
         return IPython.display.JSON({'acc': acc, 'time': time})
         # except Exception as e:
         #     kogi_print(e)
-
-    return keys
 
     output.register_callback('notebook.login', login)
     display(IPython.display.HTML(LOGIN_HTML))
