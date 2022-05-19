@@ -168,17 +168,17 @@ def kogi_login(class_name='unknown'):
         with open(FILE_NAME, 'w') as fp:
           fp.write(keys)
 
-        return keys, IPython.display.JSON({'acc': acc, 'time': time})
+        js = {'acc': acc, 'time': time}
+
+        return keys, js
+        # return keys, IPython.display.JSON({'acc': acc, 'time': time})
         # except Exception as e:
         #     kogi_print(e)
-
-    output.register_callback('notebook.login', login)
+    
+    keys, js = login
+    output.register_callback('notebook.login', IPython.display.JSON(js))
+    # output.register_callback('notebook.login', login)
     display(IPython.display.HTML(LOGIN_HTML))
     display(IPython.display.HTML(LOGIN_SCRIPT))
-    # load_slack(slack_key)
-    # if ai_key is not None:
-    #     try:
-    #         kogi_enable_ai(ai_key, start_loading=True)
-    #     except Exception as e:
-    #         print('Disabled AI', e)
-    #         kogi_enable_ai(None, start_loading=True)
+
+    return keys
