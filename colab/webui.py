@@ -1,7 +1,7 @@
 import IPython
 from IPython.display import display, HTML
 from google.colab import output
-# from .logger import load_slack, kogi_print, log, send_log, print_nop, record_login
+from .logger import log, send_log, record_login
 
 # def debug_log():
 #     try:
@@ -129,41 +129,40 @@ LOGIN_SCRIPT = '''
 '''
 
 
-# def _time(keys):
-#     times = [int(t) for t in keys.split() if t.isdigit()]
-#     return (sum(times) - max(times)) // (len(times) - 1)
+def _time(keys):
+    times = [int(t) for t in keys.split() if t.isdigit()]
+    return (sum(times) - max(times)) // (len(times) - 1)
 
 
-# CODE = '''print(math.sin(math.pi/2))
-# print(["oranges", "tables"])
-# print(weight / (height * height))
-# print(x if x >= y else y)
-# print(s[0].upper() for s in "abcdefg")'''
+CODE = '''print(math.sin(math.pi/2))
+print(["oranges", "tables"])
+print(weight / (height * height))
+print(x if x >= y else y)
+print(s[0].upper() for s in "abcdefg")'''
 
 
-# def _accuracy(code):
-#     import difflib
-#     return difflib.SequenceMatcher(None, code.strip(), CODE).ratio()
+def _accuracy(code):
+    import difflib
+    return difflib.SequenceMatcher(None, code.strip(), CODE).ratio()
 
 
-def kogi_login(ai_key=None, class_name='unknown'):
-    # def login(name, code, counts, keys, useragent):
-    #     try:
-    #         code = code.strip()
-    #         # acc = round(_accuracy(code), 3)
-    #         # time = round(_time(keys), 3)
-    #         keys = keys.split('\n')[-1]
-    #         print(keys)
-    #         record_login(type='typing',
-    #                      uid=name, class_name=class_name,
-    #                      code=code, keys=keys,
-    #                     #  mean_time=time, accuracy=acc,
-    #                      counts=counts, browser=useragent)
-    #         return IPython.display.JSON({'acc': acc, 'time': time})
-    #     except Exception as e:
-    #         kogi_print(e)
+def kogi_login(class_name='unknown'):
+    def login(name, code, counts, keys, useragent):
+        code = code.strip()
+        acc = round(_accuracy(code), 3)
+        time = round(_time(keys), 3)
+        keys = keys.split('\n')[-1]
+        print(keys)
+        record_login(type='typing',
+                      uid=name, class_name=class_name,
+                      code=code, keys=keys,
+                    #  mean_time=time, accuracy=acc,
+                      counts=counts, browser=useragent)
+        return IPython.display.JSON({'acc': acc, 'time': time})
+        # except Exception as e:
+        #     kogi_print(e)
 
-    # output.register_callback('notebook.login', login)
+    output.register_callback('notebook.login', login)
     display(IPython.display.HTML(LOGIN_HTML))
     display(IPython.display.HTML(LOGIN_SCRIPT))
     # load_slack(slack_key)
