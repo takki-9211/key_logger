@@ -146,7 +146,7 @@ LOGIN_SCRIPT = '''
 #     return difflib.SequenceMatcher(None, code.strip(), CODE).ratio()
 
 
-def kogi_login(ai_key=None, class_name='unknown', print=print_nop):
+def kogi_login(ai_key=None, class_name='unknown'):
     # def login(name, code, counts, keys, useragent):
     #     try:
     #         code = code.strip()
