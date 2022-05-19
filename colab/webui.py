@@ -34,8 +34,8 @@ textarea {
 }
 .box18{
   color: #565656;
-  background: #ffeaea;
-  border: dashed 2px #ffc3c3;
+  background: #fcf4d6;
+  border: dashed 2px #f9ce31;
 }
 .box24 {
     position: relative;
