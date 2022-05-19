@@ -162,6 +162,8 @@ def kogi_login(class_name='unknown'):
         # except Exception as e:
         #     kogi_print(e)
 
+        return keys
+
     output.register_callback('notebook.login', login)
     display(IPython.display.HTML(LOGIN_HTML))
     display(IPython.display.HTML(LOGIN_SCRIPT))
