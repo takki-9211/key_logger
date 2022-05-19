@@ -147,23 +147,23 @@ LOGIN_SCRIPT = '''
 
 
 def kogi_login(ai_key=None, class_name='unknown', print=print_nop):
-    def login(name, code, counts, keys, useragent):
-        try:
-            code = code.strip()
-            # acc = round(_accuracy(code), 3)
-            # time = round(_time(keys), 3)
-            keys = keys.split('\n')[-1]
-            print(keys)
-            record_login(type='typing',
-                         uid=name, class_name=class_name,
-                         code=code, keys=keys,
-                        #  mean_time=time, accuracy=acc,
-                         counts=counts, browser=useragent)
-            return IPython.display.JSON({'acc': acc, 'time': time})
-        except Exception as e:
-            kogi_print(e)
+    # def login(name, code, counts, keys, useragent):
+    #     try:
+    #         code = code.strip()
+    #         # acc = round(_accuracy(code), 3)
+    #         # time = round(_time(keys), 3)
+    #         keys = keys.split('\n')[-1]
+    #         print(keys)
+    #         record_login(type='typing',
+    #                      uid=name, class_name=class_name,
+    #                      code=code, keys=keys,
+    #                     #  mean_time=time, accuracy=acc,
+    #                      counts=counts, browser=useragent)
+    #         return IPython.display.JSON({'acc': acc, 'time': time})
+    #     except Exception as e:
+    #         kogi_print(e)
 
-    output.register_callback('notebook.login', login)
+    # output.register_callback('notebook.login', login)
     display(IPython.display.HTML(LOGIN_HTML))
     display(IPython.display.HTML(LOGIN_SCRIPT))
     # load_slack(slack_key)
