@@ -1,7 +1,9 @@
 
-const { v4: uuidv4 } = require('uuid');
+// const { v4: uuidv4 } = require('uuid');
+import { v4 as uuidv4 } from 'uuid';
 // var request = require('request');
-const https = require('https');
+// const https = require('https');
+import * as https from "https";
 
 const KEY='OjwoF3m0l20OFidHsRea3ptuQRfQL10ahbEtLa'
 // const headers = {'x-api-key': `A${KEY}s`};
