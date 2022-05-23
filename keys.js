@@ -43,7 +43,7 @@ if(idPane.value.length < 7) {
     return;
 }
 dict[e.key] = (dict[e.key] || 0) + 1;
-console.log(`user navi:${navigator.userAgent}`);
+console.log(`buffers :${buffers}`);
 
 var size = inputPane.value.length;
 if(size > 10 && dict[')'] >= 8 && dict['i'] >= 10 && dict['t'] >= 10) {
