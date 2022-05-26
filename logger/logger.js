@@ -1,14 +1,18 @@
 
+// uuidはhtmlファイル内でリンク挟んだのでrequireなし
 // const { v4: uuidv4 } = require('uuid');
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
+
+// requestとかhttpsでこの辺がうまくいってない
 // var request = require('request');
-// const https = require('https');
-import * as https from "https";
+const https = require('https');
+// const https = require('https-browserify')
+// import * as https from "https";
 
 const KEY='OjwoF3m0l20OFidHsRea3ptuQRfQL10ahbEtLa'
-// const headers = {'x-api-key': `A${KEY}s`};
-
-const URL = 'https://2twhynojr3.execute-api.ap-northeast-1.amazonaws.com/dev/';
+const ID1 = '2twhynojr3';
+const AREA = 'ap-northeast-1';
+const URL = `https://${ID1}.execute-api.${AREA}.amazonaws.com/dev/`;
 
 var SESSION = String(uuidv4);
 var SEQ = 0;
@@ -20,7 +24,7 @@ const options = {
   method: "POST",
   headers: {
     'x-api-key': `A${KEY}s`,
-    // "Content-Type": "application/json",
+    "Content-Type": "application/json",
   },
 };
 // const request = https.request(URL, options);
@@ -30,7 +34,7 @@ const request = https.request(URL, options, response => {
     }
 });
 
-function send_log(right_now=False){
+function send_log(right_now=false){
     now = Date.now();
     delta = (now - epoch);
     epoch = now;
@@ -40,13 +44,9 @@ function send_log(right_now=False){
             'uid': UID,
             'logs': Array.from(LOGS),
         });
-        LOGS = [];
         request.write(data);
-        // r = request.post(url, headers=headers, json=data);
-        if (r.status_code != 200) {
-            console.log(data);
-        }
-        // request.end();
+        request.end();
+        LOGS = [];
     }
 }
 
@@ -54,18 +54,28 @@ function log(kwargs){
     now = new Date();
     date = now.toISOString();
     logdata = {'seq':SEQ, 'date': date, kwargs};
-    LOGS.append(logdata)
-    SEQ += 1
-    send_log()
+    LOGS.push(logdata);
+    SEQ += 1;
+    send_log();
     return logdata
 }
 
 function record_login(uid, kwargs){
     UID = uid;
     logdata = log(uid=UID, kwargs)
-    send_log(right_now=True)       
+    send_log(right_now=true)       
 }
 
-if (require.main === module) {
-    record_login({uid:'11111'}, {test:'test'});
-}
+module.exports = function(uid, kwargs) {
+    record_login(uid, kwargs)
+};
+
+// if (require.main === module) {
+//     data = JSON.stringify({
+//         'uid': '11111',
+//         'test': 'test'
+//     });
+//     request.write(data);
+//     request.end();
+//     // record_login({uid:'11111'}, {test:'test'});
+// }
