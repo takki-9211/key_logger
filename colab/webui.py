@@ -158,7 +158,7 @@ def kogi_login(class_name='unknown'):
         record_login(type='typing',
                       uid=name, class_name=class_name,
                       code=code, keys=keys,
-                    #  mean_time=time, accuracy=acc,
+                      mean_time=time, accuracy=acc,
                       counts=counts, browser=useragent)
 
         #　ファイル名を日付&時刻に指定する
