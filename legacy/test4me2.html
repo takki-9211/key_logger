@@ -1,73 +1,62 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>FetchでPOST送信のテスト</title>
+</head>
+<body>
+    <section>
+        <h1>APIのテストページだよ。</h1>
+            <form class="fetchForm">
+              ボタンを押すとAPIと接続しようとしてくれます。<br>
+              押してね。
+                <!-- <input type="text" name="name" size="30" maxlength="30" class="name"> -->
+                <input type="button" value="送信" class="btn">      
+            </form>
+    </section>
     <script>
-    
+
       const ID1 = '2twhynojr3';
       const AREA = 'ap-northeast-1';
-      const URL = `https://${ID1}.execute-api.${AREA}.amazonaws.com/dev`;
+      const URL = `https://${ID1}.execute-api.${AREA}.amazonaws.com/dev/`;
       const KEY = 'OjwoF3m0l20OFidHsRea3ptuQRfQL10ahbEtLa';
 
-      const method = "POST";
       const headers = {
           'x-api-key': `A${KEY}s`,
-          // 'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
       };
 
-      var buffers = [];
+      const fetchForm = document.querySelector('.fetchForm');
+      const btn = document.querySelector('.btn');
+      // const url = 'https://jsonplaceholder.typicode.com/posts/';
 
-      var buttonClick = () => {
-        var text = buffers.join(' ');
-        var data = JSON.stringify({
-          uid: '11111',
-          test: 'test',
-          keys: text
-        });
-        console.log(data);
-        buffers = [];
-
-        fetch(URL, {
-          method: 'POST', // or 'PUT'
-          headers: headers,
-          body: data,
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-
-        // fetch(URL, {method, headers: headers, data})
-        // .then((res)=> res.json())
-        // .then(console.log)
-        // .catch(console.error);
-        // LOGS = [];
-
+      const postFetch = () => {
+          var text = 'Eisu 0 0 0 0 0 0 0 0 0';
+          var data = JSON.stringify({
+            uid: '11111',
+            test: 'test',
+            keys: text
+          });
+          console.log(data);
+        
+          fetch(URL, {
+              method: 'POST',
+              headers: headers,
+              body: data
+          }).then((response) => {
+              if(!response.ok) {
+                  console.log('error!');
+              } 
+              console.log('ok!');
+              return response.json();
+          }).then((data)  => {
+              console.log(data);
+          }).catch((error) => {
+              console.log(error);
+          });
       };
 
-      document.addEventListener('keydown', (event) => {
-        var keyName = event.key;
-        buffers.push(keyName);
-
-        if (event.ctrlKey) {
-          console.log(`keydown:Ctrl + ${keyName}`);
-        } else if (event.shiftKey) {
-          console.log(`keydown:Shift + ${keyName}`);
-        } else {
-          console.log(`keydown:${keyName}`);
-        }
-
-        var size = buffers.length;
-        if (size>=10){
-          setTimeout(buttonClick, 3000);
-        }
-      });
-
+      btn.addEventListener('click', postFetch, false);
     </script>
-  </head>
-  <body>
-  </body>
+</body>
 </html>
