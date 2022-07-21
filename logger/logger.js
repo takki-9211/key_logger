@@ -5,6 +5,11 @@
 const URL = 'https://2twhynojr3.execute-api.ap-northeast-1.amazonaws.com/dev/';
 const KEY = 'OjwoF3m0l20OFidHsRea3ptuQRfQL10ahbEtLa';
 
+const headers = {
+    'x-api-key': `A${KEY}s`,
+    'Content-Type': 'application/json'
+};
+
 var SESSION = String(uuidv4);
 var SEQ = 0;
 var UID = 'unknown';
@@ -21,15 +26,19 @@ function send_log(right_now=false){
             'uid': UID,
             'logs': Array.from(LOGS),
         });
-        const method = "POST";
-        const headers = {
-            'x-api-key': `A${KEY}s`,
-            // 'Content-Type': 'application/json'
-        };
-        fetch(URL, {method, headers: headers, data})
-        .then((res)=> res.json())
-        .then(console.log)
-        .catch(console.error);
+        
+        fetch(URL, {
+            method: 'POST', // or 'PUT'
+            headers: headers,
+            body: data,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
         LOGS = [];
     }
 }
