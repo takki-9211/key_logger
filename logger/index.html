@@ -156,8 +156,11 @@ print(s[0].upper() for s in "abcdefg")
         result.counts = dict;
         result.keys = buffers.join(' ');
         result.browser = window.navigator.userAgent;
-        // var result = [name, value, dict, text, window.navigator.userAgent];
+        
         console.log(result);
+
+        record_login()
+        result = new Object();
         // tmp = result.data['application/json'];
         // console.log(data.time);
         // console.log(result.time);
@@ -203,9 +206,6 @@ print(s[0].upper() for s in "abcdefg")
         document.getElementById('ok').innerText = `${size}`;
     }
     });
-
-    record_login()
-    result = new Object();
     
   </script> 
 </html>
