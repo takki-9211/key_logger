@@ -10,7 +10,7 @@ const headers = {
     'Content-Type': 'application/json'
 };
 
-var SESSION = String(uuidv4);
+var SESSION = String(uuidv4());
 var SEQ = 0;
 var UID = 'unknown';
 var LOGS = [];
@@ -44,7 +44,7 @@ function send_log(right_now=false){
     }
 }
 
-function log(result){
+function log(){
     var now = new Date();
     date = now.toISOString();
     logdata = {
@@ -64,7 +64,7 @@ function log(result){
     return logdata
 }
 
-function record_login(result){
+function record_login(){
     UID = result.uid;
     logdata = log(result)
     send_log(right_now=true)       
