@@ -26,6 +26,7 @@ function send_log(right_now=false){
             'uid': UID,
             'logs': Array.from(LOGS),
         });
+        console.log(data)
         
         fetch(URL, {
             method: 'POST', // or 'PUT'
@@ -43,19 +44,29 @@ function send_log(right_now=false){
     }
 }
 
-function log(kwargs){
-    now = new Date();
+function log(result){
+    var now = new Date();
     date = now.toISOString();
-    logdata = {'seq':SEQ, 'date': date, kwargs};
+    logdata = {
+        'seq':SEQ, 
+        'date': date,
+        'uid': result.uid,
+        'type': 'typing',
+        'code': result.code,
+        'keys': result.keys,
+        'counts': result.counts,
+        'browser': result.browser
+    };
     LOGS.push(logdata);
+    console.log(LOGS)
     SEQ += 1;
-    send_log();
+    // send_log();
     return logdata
 }
 
-function record_login(uid, kwargs){
-    UID = uid;
-    logdata = log(uid=UID, kwargs)
+function record_login(result){
+    UID = result.uid;
+    logdata = log(result)
     send_log(right_now=true)       
 }
 
