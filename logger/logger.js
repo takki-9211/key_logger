@@ -17,8 +17,8 @@ var LOGS = [];
 var epoch = Date.now();
 
 function send_log(right_now=false){
-    now = Date.now();
-    delta = (now - epoch);
+    var now = Date.now();
+    var delta = (now - epoch);
     epoch = now;
     if (LOGS.length > 0 && (right_now || delta > 180)) {
         data = JSON.stringify({
@@ -48,7 +48,7 @@ function log(){
     var now = new Date();
     date = now.toISOString();
     logdata = {
-        'seq':SEQ, 
+        'seq': SEQ, 
         'date': date,
         'uid': result.uid,
         'type': 'typing',
@@ -58,15 +58,16 @@ function log(){
         'browser': result.browser
     };
     LOGS.push(logdata);
-    console.log(LOGS)
+    console.log(LOGS);
     SEQ += 1;
     send_log();
     return logdata
 }
 
 function record_login(){
-    UID = result.uid;
-    logdata = log(result)
+    alert('record_login')
+    logdata = log()
+    alert('log()')
     send_log(right_now=true)       
 }
 
