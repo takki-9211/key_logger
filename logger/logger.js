@@ -60,7 +60,7 @@ function log(){
     LOGS.push(logdata);
     console.log(LOGS)
     SEQ += 1;
-    // send_log();
+    send_log();
     return logdata
 }
 
