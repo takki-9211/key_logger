@@ -60,14 +60,13 @@ function log(){
     LOGS.push(logdata);
     console.log(LOGS);
     SEQ += 1;
-    send_log();
+    // send_log();
     return logdata
 }
 
 function record_login(){
-    alert('record_login')
+    UID = result.uid;
     logdata = log()
-    alert('log()')
     send_log(right_now=true)       
 }
 
