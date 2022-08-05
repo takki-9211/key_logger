@@ -59,15 +59,16 @@ print(s[0].upper() for s in "abcdefg")
   <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
   <script type="text/javascript" src="./logger.js"></script>
   <script type="text/javascript">
-    var timer = null;
-    var buffers = [];
-    var dict = {};
-    var result = new Object();
+    let timer = null;
+    let buffers = [];
+    let time = [];
+    let dict = {};
+    let result = new Object();
     const idPane = document.getElementById('name');
     const inputPane = document.getElementById('input');
-    var submitted = false;
+    let submitted = false;
 
-    var buttonClick = () => {
+    let buttonClick = () => {
         // var name = idPane.value;
         // var value = inputPane.value;
         // var text = buffers.join(' ');
@@ -82,16 +83,23 @@ print(s[0].upper() for s in "abcdefg")
         result.keys = buffers.join(' ');
         result.browser = window.navigator.userAgent;
         
+        // let sum = 0;
+        // for (let i = 0; i < time.length; i++) {
+        //   sum += time[i];
+        // }
+        // result.time = sum / time.length;
+        let mean_time = _time();
+        result.time = mean_time;
+        document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
+        
         console.log(result);
 
         record_login()
         result = new Object();
-        // tmp = result.data['application/json'];
-        // console.log(data.time);
-        // console.log(result.time);
+
     };
 
-    var before = new Date().getTime();
+    let before = new Date().getTime();
     idPane.addEventListener('keydown', (e) => {
         console.log(e);
         before = new Date().getTime();
@@ -102,12 +110,15 @@ print(s[0].upper() for s in "abcdefg")
     });
 
     inputPane.addEventListener('keydown', (e) => {
-    var now = new Date().getTime();
+    let diff = (new Date().getTime()) - before;
+    if(buffers.length != 0) {
+      time.push(diff)
+    }
     if(e.key === ' ') {
-        buffers.push(`${now - before} SPACE`);
+        buffers.push(`${diff} SPACE`);
     }
     else {
-        buffers.push(`${now - before} ${e.key}`);
+        buffers.push(`${diff} ${e.key}`);
     }
 
     before = now;
@@ -118,7 +129,7 @@ print(s[0].upper() for s in "abcdefg")
     dict[e.key] = (dict[e.key] || 0) + 1;
     console.log(`buffers :${buffers}`);
 
-    var size = inputPane.value.length;
+    let size = inputPane.value.length;
     if(size > 10 && dict[')'] >= 8 && dict['i'] >= 10 && dict['t'] >= 10) {
         if(!submitted) {
             submitted = true;

@@ -7,15 +7,15 @@ const headers = {
     'Content-Type': 'application/json'
 };
 
-var SESSION = String(uuidv4());
-var SEQ = 0;
-var UID = 'unknown';
-var LOGS = [];
-var epoch = Date.now();
+let SESSION = String(uuidv4());
+let SEQ = 0;
+let UID = 'unknown';
+let LOGS = [];
+let epoch = Date.now();
 
 function send_log(right_now=false){
-    var now = Date.now();
-    var delta = (now - epoch);
+    let now = Date.now();
+    let delta = (now - epoch);
     epoch = now;
     if (LOGS.length > 0 && (right_now || delta > 180)) {
         data = JSON.stringify({
@@ -42,7 +42,7 @@ function send_log(right_now=false){
 }
 
 function log(){
-    var now = new Date();
+    let now = new Date();
     date = now.toISOString();
     logdata = {
         'seq': SEQ, 
@@ -67,12 +67,12 @@ function record_login(){
     send_log(right_now=true)       
 }
 
-
-// 時間計算用のメモ
-
-// function _time() {
-//     times = 
-// }
-// def _time(keys):
-//     times = [int(t) for t in keys.split() if t.isdigit()]
-//     return (sum(times) - max(times)) // (len(times) - 1)
+// 時間計算用
+function _time() {
+    let sum = 0;
+    for (let i = 0; i < time.length; i++) {
+      sum += time[i];
+    }
+    let mean_time = sum / time.length;
+    return mean_time
+}
