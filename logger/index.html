@@ -77,8 +77,9 @@ print(s[0].upper() for s in "abcdefg")
         
         let mean_time = _time();
         result.time = mean_time;
-        document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
-        
+        alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`)
+        // document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
+
         console.log(result);
 
         record_login()
