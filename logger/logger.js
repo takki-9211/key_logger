@@ -7,7 +7,7 @@ const headers = {
     'Content-Type': 'application/json'
 };
 
-let SESSION = String(uuidv4());
+// let SESSION = String(uuidv4());
 let SEQ = 0;
 let UID = 'unknown';
 let LOGS = [];
@@ -68,6 +68,7 @@ function record_login(){
     send_log(right_now=true)       
 }
 
+
 // 時間計算用
 function _time() {
     let sum = 0;
@@ -76,4 +77,34 @@ function _time() {
     }
     let mean_time = Math.trunc(sum / time.length);
     return mean_time
+}
+
+// 最終送信用
+function buttonClick() {
+    result.uid = idPane.value;
+    result.code = inputPane.value;
+    result.counts = dict;
+    result.keys = buffers.join(' ');
+    result.browser = window.navigator.userAgent;
+    
+    let mean_time = _time();
+    result.time = mean_time;
+    // document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
+    
+    console.log(result);
+
+    record_login();
+    result = new Object();
+}
+
+// alert条件分岐用
+function MoveCheck() {
+    if( confirm("タイピングは全て終わっていますか？") ) {
+        buttonClick();
+        alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
+        location.href = 'https://artms007.github.io/key/logger/index.html';
+    }
+    else {
+        alert("引き続きよろしくお願いいたします！");
+    }
 }

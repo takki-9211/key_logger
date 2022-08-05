@@ -59,6 +59,7 @@ print(s[0].upper() for s in "abcdefg")
   <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
   <script type="text/javascript" src="./logger.js"></script>
   <script type="text/javascript">
+    let SESSION = String(uuidv4());
     let timer = null;
     let buffers = [];
     let time = [];
@@ -67,26 +68,6 @@ print(s[0].upper() for s in "abcdefg")
     const idPane = document.getElementById('name');
     const inputPane = document.getElementById('input');
     let submitted = false;
-
-    let buttonClick = () => {
-        result.uid = idPane.value;
-        result.code = inputPane.value;
-        result.counts = dict;
-        result.keys = buffers.join(' ');
-        result.browser = window.navigator.userAgent;
-        
-        let mean_time = _time();
-        result.time = mean_time;
-        alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
-        location.href = 'https://artms007.github.io/key/logger/index.html';
-        // document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
-
-        console.log(result);
-
-        record_login()
-        result = new Object();
-
-    };
 
     let before = new Date().getTime();
     idPane.addEventListener('keydown', (e) => {
@@ -125,7 +106,7 @@ print(s[0].upper() for s in "abcdefg")
             submitted = true;
             document.getElementById('ok').innerText = '出席';
 
-            setTimeout(buttonClick, 7000);
+            setTimeout(MoveCheck(), 5000);
         }
     }
     else{
