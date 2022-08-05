@@ -95,16 +95,7 @@ function buttonClick() {
 
     record_login();
     result = new Object();
-}
 
-// alert条件分岐用
-function MoveCheck() {
-    if( confirm("タイピングは全て終わっていますか？") ) {
-        buttonClick();
-        alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
-        location.href = 'https://artms007.github.io/key/logger/index.html';
-    }
-    else {
-        alert("引き続きよろしくお願いいたします！");
-    }
+    alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
+    location.href = 'https://artms007.github.io/key/logger/index.html';
 }

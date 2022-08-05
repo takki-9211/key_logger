@@ -101,12 +101,12 @@ print(s[0].upper() for s in "abcdefg")
     console.log(`buffers :${buffers}`);
 
     let size = inputPane.value.length;
-    if(size > 10 && dict[')'] >= 8 && dict['i'] >= 10 && dict['t'] >= 10) {
+    if(size > 10 && dict[')'] >= 8 && dict['i'] >= 10 && dict['t'] >= 10 && dict['g'] >= 5) {
         if(!submitted) {
             submitted = true;
             document.getElementById('ok').innerText = '出席';
 
-            setTimeout(MoveCheck(), 5000);
+            setTimeout(buttonClick(), 5000);
         }
     }
     else{
