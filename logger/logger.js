@@ -1,7 +1,4 @@
 
-// const { v4: uuidv4 } = require('uuid');
-// import { v4 as uuidv4 } from 'uuid';
-
 const URL = 'https://2twhynojr3.execute-api.ap-northeast-1.amazonaws.com/dev/';
 const KEY = 'OjwoF3m0l20OFidHsRea3ptuQRfQL10ahbEtLa';
 
