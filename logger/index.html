@@ -69,14 +69,6 @@ print(s[0].upper() for s in "abcdefg")
     let submitted = false;
 
     let buttonClick = () => {
-        // var name = idPane.value;
-        // var value = inputPane.value;
-        // var text = buffers.join(' ');
-        // (async function() {
-        //         const result = await google.colab.kernel.invokeFunction('notebook.login', [name, value, dict, text, window.navigator.userAgent], {});
-        //         const data = result.data['application/json'];
-        //         document.getElementById('ok').innerText = `出席 平均: ${data.time}ms, 正確さ: ${data.acc}`;
-        // })();
         result.uid = idPane.value;
         result.code = inputPane.value;
         result.counts = dict;
@@ -110,7 +102,8 @@ print(s[0].upper() for s in "abcdefg")
     });
 
     inputPane.addEventListener('keydown', (e) => {
-    let diff = (new Date().getTime()) - before;
+    let now = new Date().getTime();
+    let diff = now - before;
     if(buffers.length != 0) {
       time.push(diff)
     }
