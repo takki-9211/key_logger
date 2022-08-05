@@ -80,22 +80,22 @@ function _time() {
 }
 
 // 最終送信用
-function buttonClick() {
-    result.uid = idPane.value;
-    result.code = inputPane.value;
-    result.counts = dict;
-    result.keys = buffers.join(' ');
-    result.browser = window.navigator.userAgent;
+// function buttonClick() {
+//     result.uid = idPane.value;
+//     result.code = inputPane.value;
+//     result.counts = dict;
+//     result.keys = buffers.join(' ');
+//     result.browser = window.navigator.userAgent;
     
-    let mean_time = _time();
-    result.time = mean_time;
-    // document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
+//     let mean_time = _time();
+//     result.time = mean_time;
+//     // document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
     
-    console.log(result);
+//     console.log(result);
 
-    record_login();
-    result = new Object();
+//     record_login();
+//     result = new Object();
 
-    alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
-    location.href = 'https://artms007.github.io/key/logger/index.html';
-}
+//     alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
+//     location.href = 'https://artms007.github.io/key/logger/index.html';
+// }

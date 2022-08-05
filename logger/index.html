@@ -69,6 +69,26 @@ print(s[0].upper() for s in "abcdefg")
     const inputPane = document.getElementById('input');
     let submitted = false;
 
+    let buttonClick = () => {
+        result.uid = idPane.value;
+        result.code = inputPane.value;
+        result.counts = dict;
+        result.keys = buffers.join(' ');
+        result.browser = window.navigator.userAgent;
+        
+        let mean_time = _time();
+        result.time = mean_time;
+        // document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
+        
+        console.log(result);
+
+        record_login();
+        result = new Object();
+
+        alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
+        location.href = 'https://artms007.github.io/key/logger/index.html';
+    };
+
     let before = new Date().getTime();
     idPane.addEventListener('keydown', (e) => {
         console.log(e);
@@ -106,7 +126,7 @@ print(s[0].upper() for s in "abcdefg")
             submitted = true;
             document.getElementById('ok').innerText = '出席';
 
-            setTimeout(buttonClick(), 5000);
+            setTimeout(buttonClick, 5000);
         }
     }
     else{
