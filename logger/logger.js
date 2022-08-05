@@ -1,7 +1,4 @@
 
-// const { v4: uuidv4 } = require('uuid');
-// import { v4 as uuidv4 } from 'uuid';
-
 const URL = 'https://2twhynojr3.execute-api.ap-northeast-1.amazonaws.com/dev/';
 const KEY = 'OjwoF3m0l20OFidHsRea3ptuQRfQL10ahbEtLa';
 
@@ -70,6 +67,10 @@ function record_login(){
     send_log(right_now=true)       
 }
 
-// if (require.main === module) {
-//     record_login({uid:'11111'}, {test:'test'});
-// }
+function _time() {
+    times = 
+}
+
+def _time(keys):
+    times = [int(t) for t in keys.split() if t.isdigit()]
+    return (sum(times) - max(times)) // (len(times) - 1)
