@@ -67,10 +67,12 @@ function record_login(){
     send_log(right_now=true)       
 }
 
-function _time() {
-    times = 
-}
 
-def _time(keys):
-    times = [int(t) for t in keys.split() if t.isdigit()]
-    return (sum(times) - max(times)) // (len(times) - 1)
+// 時間計算用のメモ
+
+// function _time() {
+//     times = 
+// }
+// def _time(keys):
+//     times = [int(t) for t in keys.split() if t.isdigit()]
+//     return (sum(times) - max(times)) // (len(times) - 1)
