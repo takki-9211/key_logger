@@ -75,11 +75,6 @@ print(s[0].upper() for s in "abcdefg")
         result.keys = buffers.join(' ');
         result.browser = window.navigator.userAgent;
         
-        // let sum = 0;
-        // for (let i = 0; i < time.length; i++) {
-        //   sum += time[i];
-        // }
-        // result.time = sum / time.length;
         let mean_time = _time();
         result.time = mean_time;
         document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}

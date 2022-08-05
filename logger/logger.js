@@ -74,6 +74,6 @@ function _time() {
     for (let i = 0; i < time.length; i++) {
       sum += time[i];
     }
-    let mean_time = sum / time.length;
+    let mean_time = Math.trunc(sum / time.length);
     return mean_time
 }
