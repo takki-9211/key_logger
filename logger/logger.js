@@ -52,6 +52,7 @@ function log(){
         'code': result.code,
         'keys': result.keys,
         'counts': result.counts,
+        'time': result.time,
         'browser': result.browser
     };
     LOGS.push(logdata);
