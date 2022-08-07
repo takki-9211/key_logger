@@ -77,11 +77,11 @@ print(s[0].upper() for s in "abcdefg")
 
     // アンケートのuuidと紐付け
     if ( localStorage.getItem('uuid') ){ 
-      const idPane = localStorage.getItem('uuid');
+      idPane = localStorage.getItem('uuid');
       console.log(idPane)
       // const idPane = document.getElementById('name');
     } else {
-      const idPane = String(uuidv4());
+      idPane = String(uuidv4());
     }
 
     // const idPane = document.getElementById('name');
