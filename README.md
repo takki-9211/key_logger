@@ -14,10 +14,10 @@ kogi_login()
 
 ## logger
 
-HTMLページ上で収集可能になったバージョン。
+HTMLページ上で収集可能になったバージョン。  
 アクセス先：`https://artms007.github.io/key/logger/logger.html`
 
 ## guest
 
-学外の方向けにloggerを調整したバージョン。
+学外の方向けにloggerを調整したバージョン。  
 アクセス先：`https://artms007.github.io/key/guest/quest.html`
