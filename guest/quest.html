@@ -15,7 +15,7 @@
                 var identification = document.querySelector("[name='entry.1862155340']");
                 identification.value = String(uuidv4());
                 console.log(identification.value);
-                localStorage.setItem('uuid', uuid);
+                localStorage.setItem('uuid', identification.value);
 
                 var queryString = window.location.search;
                 var keyValue = queryString.substring(1).split('&').map((p) => p.split('=')).reduce((obj, e) => ({...obj, [e[0]]: e[1]}), {});
