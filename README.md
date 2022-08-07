@@ -15,7 +15,7 @@ kogi_login()
 ## logger
 
 HTMLページ上で収集可能になったバージョン。  
-アクセス先：`https://artms007.github.io/key/logger/logger.html`
+アクセス先：`https://artms007.github.io/key/logger/index.html`
 
 ## guest
 
