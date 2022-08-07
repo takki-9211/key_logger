@@ -73,6 +73,7 @@ print(s[0].upper() for s in "abcdefg")
     let time = [];
     let dict = {};
     let result = new Object();
+    let idPane = null;
 
     // アンケートのuuidと紐付け
     if ( localStorage.getItem('uuid') ){ 
@@ -105,6 +106,7 @@ print(s[0].upper() for s in "abcdefg")
         result = new Object();
 
         alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
+        localStorage.removeItem('uuid');
         // location.href = 'https://artms007.github.io/key/guest/quest.html';
     };
 
@@ -132,7 +134,7 @@ print(s[0].upper() for s in "abcdefg")
         if(!submitted) {
             submitted = true;
             // document.getElementById('ok').innerText = '出席';
-            setTimeout(buttonClick, 5000);
+            setTimeout(buttonClick, 4000);
         }
     }
     // else{
