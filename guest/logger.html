@@ -46,6 +46,7 @@
   <div>
     <p style="text-align: center; margin-top: 7%;">
       左側の黄色枠内はお手本用のコードです。右側の水色枠内に同様のコードをタイプしてください！
+      タイプ終了後、約3秒後にデータが送信されます。ダイアログボックスが表示されるまでお待ちください。
     </p>
   </div>
   <div class="parent">
@@ -107,7 +108,7 @@ print(s[0].upper() for s in "abcdefg")
 
         alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
         localStorage.removeItem('uuid');
-        // location.href = 'https://artms007.github.io/key/guest/quest.html';
+        location.href = 'https://artms007.github.io/key/guest/quest.html';
     };
 
     let before = new Date().getTime();
@@ -134,7 +135,7 @@ print(s[0].upper() for s in "abcdefg")
         if(!submitted) {
             submitted = true;
             // document.getElementById('ok').innerText = '出席';
-            setTimeout(buttonClick, 4000);
+            setTimeout(buttonClick, 3500);
         }
     }
     // else{
