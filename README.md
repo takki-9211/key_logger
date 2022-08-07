@@ -20,4 +20,6 @@ HTMLページ上で収集可能になったバージョン。
 ## guest
 
 学外の方向けにloggerを調整したバージョン。  
-アクセス先：`https://artms007.github.io/key/guest/quest.html`
+アクセス先：`https://artms007.github.io/key/guest/quest.html`  
+
+アンケートと紐づいているGoogle Formsは[こちら](https://docs.google.com/forms/d/e/1FAIpQLSdDdztaVqnOLzzAX97q09qs6lQjxd54aVPgXCK5twoWp6Qd6Q/viewform)。
