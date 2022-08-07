@@ -20,7 +20,7 @@ function send_log(right_now=false){
     if (LOGS.length > 0 && (right_now || delta > 180)) {
         data = JSON.stringify({
             'session': SESSION,
-            // 'uid': UID,
+            'uid': UID,
             'logs': Array.from(LOGS),
         });
         console.log(data)
