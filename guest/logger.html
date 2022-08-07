@@ -67,7 +67,7 @@ print(s[0].upper() for s in "abcdefg")
   <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
   <script type="text/javascript" src="./logger.js"></script>
   <script type="text/javascript">
-    let SESSION = String(uuidv4());
+    // let SESSION = String(uuidv4());
     let timer = null;
     let buffers = [];
     let time = [];
@@ -76,9 +76,11 @@ print(s[0].upper() for s in "abcdefg")
 
     // アンケートのuuidと紐付け
     if ( localStorage.getItem('uuid') ){ 
+      let SESSION = localStorage.getItem('uuid');
       const idPane = localStorage.getItem('uuid');
       // const idPane = document.getElementById('name');
     } else {
+      let SESSION = String(uuidv4());
       const idPane = String(uuidv4());
     }
 
