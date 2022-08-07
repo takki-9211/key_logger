@@ -77,6 +77,7 @@ print(s[0].upper() for s in "abcdefg")
     // アンケートのuuidと紐付け
     if ( localStorage.getItem('uuid') ){ 
       const idPane = localStorage.getItem('uuid');
+      console.log(idPane)
       // const idPane = document.getElementById('name');
     } else {
       const idPane = String(uuidv4());
@@ -104,7 +105,7 @@ print(s[0].upper() for s in "abcdefg")
         result = new Object();
 
         alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
-        location.href = 'https://artms007.github.io/key/guest/quest.html';
+        // location.href = 'https://artms007.github.io/key/guest/quest.html';
     };
 
     let before = new Date().getTime();
