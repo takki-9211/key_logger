@@ -47,7 +47,7 @@ function log(){
     logdata = {
         'seq': SEQ,
         'date': date,
-        // 'uid': result.uid,
+        'uid': result.uid,
         'type': 'typing_outsider',
         'code': result.code,
         'keys': result.keys,
@@ -63,7 +63,7 @@ function log(){
 }
 
 function record_login(){
-    // UID = result.uid;
+    UID = result.uid;
     logdata = log()
     send_log(right_now=true)       
 }
