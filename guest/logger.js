@@ -47,7 +47,7 @@ function log(){
     logdata = {
         'seq': SEQ,
         'date': date,
-        'uid': result.uid,
+        'uid': UID,
         'type': 'typing_outsider',
         'code': result.code,
         'keys': result.keys,
