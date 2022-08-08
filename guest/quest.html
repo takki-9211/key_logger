@@ -37,11 +37,26 @@
         <form action="https://docs.google.com/forms/u/4/d/e/1FAIpQLSdDdztaVqnOLzzAX97q09qs6lQjxd54aVPgXCK5twoWp6Qd6Q/formResponse"
                 name="quest_form" method="POST" id="mG61Hd" target="hidden_iframe" onsubmit="return check()">
             <br>
-            アンケートにご協力くださいませ。
+            事前アンケートにご協力くださいませ。
             <br><br>
             <input name="entry.1862155340" type="hidden">
+            <div class="inputs" name="age">
+                <label class="label">1. ご自身の年代 <span>*</span></label><br><br>
+                <input name="entry.1642460957" type="radio" name="age" value="10代" id="age1" required="required">
+                <label for="age1">10代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="20代" id="age2">
+                <label for="age2">20代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="30代" id="age3">
+                <label for="age3">30代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="40代" id="age4">
+                <label for="age4">40代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="50代" id="age5">
+                <label for="age5">50代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="その他" id="age6">
+                <label for="age6">その他</label>
+            </div>
             <div class="inputs" name="jobs">
-                <label class="label">1. 現在のご職業 <span>*</span></label><br><br>
+                <label class="label">2. 現在のご職業 <span>*</span></label><br><br>
                 <input name="entry.1456955880" type="radio" name="job" value="中学生" id="job1" required="required">
                 <label for="job1">中学生</label>
                 <input name="entry.1456955880" type="radio" name="job" value="高校生" id="job2">
@@ -60,7 +75,7 @@
                 <input name="entry.321305014" id="i_name" type="text" name="job_d" value="" placeholder="例）日本女子大学" style="margin-top: 0.5%; margin-left: 1%;  width: 70%; height: 30px;">
             </div>
             <div class="inputs" name="experience">
-                <label class="label" for="t_message">2. これまでにプログラミングの経験がありますか？ <span>*</span></label><br><br>
+                <label class="label" for="t_message">3. これまでにプログラミングの経験がありますか？ <span>*</span></label><br><br>
                 <input name="entry.812504933" type="radio" name="exp" value="６ヶ月ほど" id="exp1" required="required">
                 <label for="exp1">６ヶ月ほど</label>
                 <input name="entry.812504933" type="radio" name="exp" value="６ヶ月〜１年" id="exp2">
@@ -75,7 +90,7 @@
                 <label for="exp6">経験なし</label>
             </div>
             <div class="inputs" name="jobs">
-                <label class="label" for="i_name">3. 得意もしくは好きなプログラミング言語を教えてください。<span>*</span>（複数回答可）<br>
+                <label class="label" for="i_name">4. 得意もしくは好きなプログラミング言語を教えてください。<span>*</span>（複数回答可）<br>
                                                     &emsp;未経験の方は、知っているもしくは気になるプログラミング言語を教えてください。</label><br>
                 <input name="entry.1130182014" id="i_name" required="required" type="text" name="job_d" value="" placeholder="例）Python, Java, Rust" style="margin-top: 1.5%; margin-left: 1%;  width: 70%; height: 30px;">
             </div>
