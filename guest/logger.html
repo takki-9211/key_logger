@@ -54,23 +54,23 @@
     <div>
       <p style="text-align: center; margin-top: 7%;">
         左側の黄色枠内はお手本用のコードです。右側の水色枠内に同様のコードをタイプしてください！<br>
-        タイプ終了後、約3秒後にデータが送信されます。ダイアログボックスが表示されるまでお待ちください。
+        全ての行のタイプ終了後、約3秒後にデータが送信されます。ダイアログボックスが表示されるまでお待ちください。
       </p>
     </div>
     <div class="parent">
       <div style="float: left; width: 50%; text-align: right;">
         <label class="box24" for="outout">Code</label>
         <textarea id="output" class="box18 python" readonly>
-  print(math.sin(math.pi/2))
-  print(["oranges", "tables"])
-  print(weight / (height * height))
-  print(x if x >= y else y)
-  print(s[0].upper() for s in "abcdefg")
+print(math.sin(math.pi/2))
+print(["oranges", "tables"])
+print(weight / (height * height))
+print(x if x >= y else y)
+print(s[0].upper() for s in "abcdefg")
         </textarea>
       </div>
       <div style="float: left; width: 50%; text-align: right; ">
         <label class="box24" for="input">Type In</label>
-        <textarea id="input" class="box16"></textarea>
+        <textarea id="input" class="box16" placeholder="ここに打ち込んでください"></textarea>
       </div>
     </div>
     <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
