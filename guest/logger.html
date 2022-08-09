@@ -48,13 +48,35 @@
         background-color: #cccccc;
         border-radius: 50vh;
       }
+      .btn_area{
+        display: block;
+        width: 110px;
+        margin: 0 auto;
+      }
+      button[type="button"]{
+        background-color: #2882c2;
+        border: 3px solid #2882c2;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+        color: #fff;
+        font-size:15px;
+        font-weight:bold;
+        padding: 10px 20px;
+        margin: 0 auto;
+        margin-top: 30%;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      button[type="button"]:hover {
+        color: #2882c2;
+        background-color: #fff;
+      }
     </style>
     <!-- <label>Student ID</label><input id="name"/>
     <span class="button02" id="ok">Ready</span> -->
     <div>
       <p style="text-align: center; margin-top: 7%;">
         左側の黄色枠内はお手本用のコードです。右側の水色枠内に同様のコードをタイプしてください！<br>
-        全ての行のタイプ終了後、約3秒後にデータが送信されます。ダイアログボックスが表示されるまでお待ちください。
+        5行全ての内容をタイプ終了後、送信ボタンを押してください。
       </p>
     </div>
     <div class="parent">
@@ -71,6 +93,12 @@ print(s[0].upper() for s in "abcdefg")
       <div style="float: left; width: 50%; text-align: right; ">
         <label class="box24" for="input">Type In</label>
         <textarea id="input" class="box16" placeholder="ここに打ち込んでください"></textarea>
+      </div>
+      <br>
+      <br>
+      <div class="btn_area" id="submit-button">
+        <button id="submit-button" type="button">送信する</button>
+        <!-- <button id="submit-button" type="button" onclick="location.href='radio.html'">入力内容を送信する</button> -->
       </div>
     </div>
     <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
@@ -98,57 +126,76 @@ print(s[0].upper() for s in "abcdefg")
       let submitted = false;
 
       let buttonClick = () => {
-          // result.uid = idPane.value;
-          result.uid = idPane;
-          result.code = inputPane.value;
-          result.counts = dict;
-          result.keys = buffers.join(' ');
-          result.browser = window.navigator.userAgent;
-          
-          let mean_time = _time();
-          result.time = mean_time;
-          // document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
-          
-          console.log(result);
+        // result.uid = idPane.value;
+        result.uid = idPane;
+        result.code = inputPane.value;
+        result.counts = dict;
+        result.keys = buffers.join(' ');
+        result.browser = window.navigator.userAgent;
+        
+        let mean_time = _time();
+        result.time = mean_time;
+        // document.getElementById('ok').innerText = `送信しました。\n 平均: ${mean_time}ms`; //, 正確さ: ${data.acc}
+        
+        console.log(result);
 
-          record_login();
-          result = new Object();
+        // record_login();
+        result = new Object();
 
-          alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
-          localStorage.removeItem('uuid');
-          location.href = 'https://artms007.github.io/key/guest/quest.html';
+        alert(`タイピングにかかった平均時間は、${mean_time}ms です。\nご協力ありがとうございました！`);
+        // localStorage.removeItem('uuid');
+        // location.href = 'https://artms007.github.io/key/guest/quest.html';
       };
 
       let before = new Date().getTime();
 
       inputPane.addEventListener('keydown', (e) => {
-      let now = new Date().getTime();
-      let diff = now - before;
-      if(buffers.length != 0) {
-        time.push(diff)
-      }
-      if(e.key === ' ') {
-          buffers.push(`${diff} SPACE`);
-      }
-      else {
-          buffers.push(`${diff} ${e.key}`);
-      }
+        let now = new Date().getTime();
+        let diff = now - before;
+        if(buffers.length != 0) {
+          time.push(diff)
+        }
+        if(e.key === ' ') {
+            buffers.push(`${diff} SPACE`);
+        }
+        else {
+            buffers.push(`${diff} ${e.key}`);
+        }
 
-      before = now;
-      dict[e.key] = (dict[e.key] || 0) + 1;
-      console.log(`buffers :${buffers}`);
+        before = now;
+        dict[e.key] = (dict[e.key] || 0) + 1;
+        console.log(`buffers :${buffers}`);
 
-      let size = inputPane.value.length;
-      if(size > 10 && dict[')'] >= 8 && dict['i'] >= 10 && dict['t'] >= 10 && dict['g'] >= 5) {
-          if(!submitted) {
-              submitted = true;
-              // document.getElementById('ok').innerText = '出席';
-              setTimeout(buttonClick, 3500);
+        let size = inputPane.value.length;
+        // 自動で送信用
+        // if(size > 10 && dict[')'] >= 8 && dict['i'] >= 10 && dict['t'] >= 10 && dict['g'] >= 5) {
+        //     if(!submitted) {
+        //         submitted = true;
+        //         // document.getElementById('ok').innerText = '出席';
+        //         setTimeout(buttonClick, 3500);
+        //     }
+        // }
+        // else{
+        //     document.getElementById('ok').innerText = `${size}`;
+        // }
+        
+        // ボタンで送信用
+        document.getElementById("submit-button").onclick = function() {
+          if(size > 10 && dict[')'] >= 8 && dict['i'] >= 10 && dict['t'] >= 10 && dict['g'] >= 5) {
+            if(!submitted) {
+                submitted = true;
+                buttonClick();
+                // document.getElementById('ok').innerText = '出席';
+                // setTimeout(buttonClick, 3500);
+            }
+          }else{
+            alert("⚠️送信されていません\n最後の行までの入力にご協力ください🙇‍♀️");
+            
           }
-      }
-      // else{
-      //     document.getElementById('ok').innerText = `${size}`;
-      // }
+          // else{
+          //     document.getElementById('ok').innerText = `${size}`;
+          // }
+        };
       });
       
     </script> 
