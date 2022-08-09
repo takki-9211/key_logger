@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <!-- <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://artms007.github.io;"> -->
+        <title>アンケート</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+        <script>
+            var submitted = false;
+            document.addEventListener("DOMContentLoaded", () => {
+                var identification = document.querySelector("[name='entry.1862155340']");
+                identification.value = String(uuidv4());
+                console.log(identification.value);
+                localStorage.setItem('uuid', identification.value);
+
+                var queryString = window.location.search;
+                var keyValue = queryString.substring(1).split('&').map((p) => p.split('=')).reduce((obj, e) => ({...obj, [e[0]]: e[1]}), {});
+                Object.keys(keyValue).forEach((key) => {
+                    var elem = document.querySelector("[name='" + key + "']");
+                    if(elem) {
+                        elem.value = decodeURI(keyValue[key]);
+                    }
+                });
+            });
+
+            function check(){
+                window.alert('アンケートを送信しました！\nキータイピング画面に遷移します。')
+                return submitted=true;
+            }
+
+        </script>
+
+        <form action="https://docs.google.com/forms/u/4/d/e/1FAIpQLSfLuldjkYqxCjJuZR3TRYkVN5-V4epMU77KnALjr8oPCOJoLg/formResponse"
+                name="quest_form" method="POST" id="mG61Hd" target="hidden_iframe" onsubmit="return check()">
+            <br>
+            タイピングデータの収集にご協力いただき、ありがとうございます。<br>
+            事前アンケートにご回答くださいませ。入力内容を送信いただくと、タイピングデータ収集ページに遷移します。
+            <br><br>
+            <input name="entry.1862155340" type="hidden">
+            <div class="inputs" name="age">
+                <label class="label">1. ご自身の年代 <span>*</span></label><br><br>
+                <input name="entry.1642460957" type="radio" name="age" value="10代" id="age1" required="required">
+                <label for="age1">10代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="20代" id="age2">
+                <label for="age2">20代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="30代" id="age3">
+                <label for="age3">30代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="40代" id="age4">
+                <label for="age4">40代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="50代" id="age5">
+                <label for="age5">50代</label>
+                <input name="entry.1642460957" type="radio" name="age" value="その他" id="age6">
+                <label for="age6">その他</label>
+            </div>
+            <div class="inputs" name="jobs">
+                <label class="label">2. 現在のご職業 <span>*</span></label><br><br>
+                <input name="entry.1456955880" type="radio" name="job" value="中学生" id="job1" required="required">
+                <label for="job1">中学生</label>
+                <input name="entry.1456955880" type="radio" name="job" value="高校生" id="job2">
+                <label for="job2">高校生</label>
+                <input name="entry.1456955880" type="radio" name="job" value="大学生" id="job3">
+                <label for="job3">大学生</label>
+                <input name="entry.1456955880" type="radio" name="job" value="大学院生" id="job4" class="job">
+                <label for="job4">大学院生</label>
+                <input name="entry.1456955880" type="radio" name="job" value="会社員" id="job5">
+                <label for="job5">会社員</label>
+                <input name="entry.1456955880" type="radio" name="job" value="その他" id="job6">
+                <label for="job6">その他</label>
+            </div>
+            <div class="inputs" name="jobs">
+                <label class="label_u" for="i_name">差し支えなければ、ご所属先を教えてください。</label><br>
+                <input name="entry.321305014" id="i_name" type="text" name="job_d" value="" placeholder="例）日本女子大学" style="margin-top: 0.5%; margin-left: 1%;  width: 70%; height: 30px;">
+            </div>
+            <div class="inputs" name="experience">
+                <label class="label" for="t_message">3. これまでにプログラミングの経験がありますか？ <span>*</span></label><br><br>
+                <input name="entry.812504933" type="radio" name="exp" value="６ヶ月ほど" id="exp1" required="required">
+                <label for="exp1">６ヶ月ほど</label>
+                <input name="entry.812504933" type="radio" name="exp" value="６ヶ月〜１年" id="exp2">
+                <label for="exp2">６ヶ月〜１年</label>
+                <input name="entry.812504933" type="radio" name="exp" value="１年〜２年" id="exp3">
+                <label for="exp3">１年〜２年</label>
+                <input name="entry.812504933" type="radio" name="exp" value="２年〜３年" id="exp4">
+                <label for="exp4">２年〜３年</label>
+                <input name="entry.812504933" type="radio" name="exp" value="４年以上" id="exp5">
+                <label for="exp5">４年以上</label>
+                <input name="entry.812504933" type="radio" name="exp" value="経験なし" id="exp6">
+                <label for="exp6">経験なし</label>
+            </div>
+            <div class="inputs" name="experience">
+                <label class="label" for="t_message">4. プログラミングスキルに自信はありますか？ <span>*</span></label><br><br>
+                <input name="entry.1055819037" type="radio" name="confi" value="非常に得意だと思う" id="confi1" required="required">
+                <label for="confi1">非常に得意だと思う</label>
+                <input name="entry.1055819037" type="radio" name="confi" value="やや得意だと思う" id="confi2">
+                <label for="confi2">やや得意だと思う</label>
+                <input name="entry.1055819037" type="radio" name="confi" value="普通だと思う" id="confi3">
+                <label for="confi3">普通だと思う</label>
+                <input name="entry.1055819037" type="radio" name="confi" value="苦手だと思う" id="confi4">
+                <label for="confi4">苦手だと思う</label>
+                <input name="entry.1055819037" type="radio" name="confi" value="未経験なので分からない" id="confi5">
+                <label for="confi5">未経験なので分からない</label>
+            </div>
+            <div class="inputs" name="jobs">
+                <label class="label" for="i_name">5. 得意もしくは好きなプログラミング言語を教えてください。<span>*</span>（複数回答可）<br>
+                                                    &emsp;未経験の方は、知っているもしくは気になるプログラミング言語を教えてください。</label><br>
+                <input name="entry.1130182014" id="i_name" required="required" type="text" name="job_d" value="" placeholder="例）Python, Java, Rust" style="margin-top: 1.5%; margin-left: 1%;  width: 70%; height: 30px;">
+            </div>
+            <!-- <div class="inputs" name="jobs">
+                <label class="label" for="t_message">差し支えなければ、ご所属先を教えてください。</label><br><br>
+                <textarea id="t_message" name="message" placeholder="こちらにお問い合わせ内容を入力してください。"></textarea>
+            </div> -->
+            <div class="btn_area">
+                <input type="submit" name="btn_confirm" value="入力内容を送信する" >
+                <!-- onclick="location.href='./radio.html'" -->
+                <!-- <button id="submit-button" type="button" onclick="location.href='radio.html'">入力内容を送信する</button> -->
+            </div>
+
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){window.location='logger_regio.html';}"></iframe>
+        </form>
+
+    </body>
+</html>

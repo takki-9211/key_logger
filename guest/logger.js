@@ -48,7 +48,7 @@ function log(){
         'seq': SEQ,
         'date': date,
         'uid': UID,
-        'type': 'typing_guest',
+        'type': result.type,
         'code': result.code,
         'keys': result.keys,
         'counts': result.counts,
