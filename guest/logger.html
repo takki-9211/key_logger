@@ -62,7 +62,7 @@
         font-weight:bold;
         padding: 10px 20px;
         margin: 0 auto;
-        margin-top: 30%;
+        margin-top: 6%;
         border-radius: 10px;
         cursor: pointer;
       }
@@ -76,8 +76,6 @@
     <div>
       <p style="text-align: center; margin-top: 7%;">
         左側の黄色枠内はお手本用のコードです。右側の水色枠内に、お手本と同じコードをタイプしてください！<br>
-        5行全ての内容をタイプ終了後、送信ボタンを押してください。
-        ※コピー&ペーストしたものはカウントされません。
       </p>
     </div>
     <div class="parent">
@@ -97,6 +95,10 @@ print(s[0].upper() for s in "abcdefg")
       </div>
       <br>
       <br>
+      <p style="text-align: center; margin-top: 12%;">
+        5行全ての内容をタイプ終了後、送信ボタンを押してください。<br>
+        ※コピー&ペーストしたものはカウントされません。
+      </p>
       <div class="btn_area" id="submit-button">
         <button id="submit-button" type="button">送信する</button>
         <!-- <button id="submit-button" type="button" onclick="location.href='radio.html'">入力内容を送信する</button> -->
@@ -191,7 +193,7 @@ print(s[0].upper() for s in "abcdefg")
                 // setTimeout(buttonClick, 3500);
             }
           }else{
-            alert("⚠️送信されていません\n最後の行までの入力にご協力ください🙇‍♀️");
+            alert("⚠️送信されていません\n全ての行の入力にご協力ください🙇‍♀️");
             
           }
           // else{
